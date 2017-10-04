@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Main3Activity extends AppCompatActivity {
     private Button logOut;
     private TextView text;
+    private Button readRatData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class Main3Activity extends AppCompatActivity {
                 launchActivity();
             }
         });
+        readRatData = (Button) findViewById(R.id.readRatData);
     }
 
     @Override
