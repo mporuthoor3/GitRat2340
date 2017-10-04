@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Rat Tracker</string>
+    <string-array name="Entries">
+        <item>Standard User</item>
+        <item>Admin</item>
+    </string-array>
+</resources>
