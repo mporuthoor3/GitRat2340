@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "196589775301",
+    "firebase_url": "https://gitrat-2c46a.firebaseio.com",
+    "project_id": "gitrat-2c46a",
+    "storage_bucket": "gitrat-2c46a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196589775301:android:55306f2bac513ec6",
+        "android_client_info": {
+          "package_name": "a2340.m4_login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196589775301-lj7t0hfsfotfiahs71f2rga3043bup6u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6U4oyfkA3tjyXDfgCRJScBUgmXUW-p_I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
