@@ -27,5 +27,18 @@ public class RatSighting implements Serializable{
         longitude = lon;
     }
 
+    public String toString() {
+        String str = "";
+        str += ("Key: " + key);
+        str += (", Date Created: " + createdDate);
+        str += (", Location Type: " + locType.getDetail());
+        str += (", Incident Zip: " + incZip);
+        str += (", Incident Address: " + incAdd);
+        str += (", City: " + city.getDetail());
+        str += (", Borough: " + borough.getDetail());
+        str += (", Latitude: " + latitude);
+        str += (", Longitude: " + longitude);
+        return str;
+    }
 
 }

@@ -7,7 +7,6 @@ public class User implements Serializable{
     private String name, user, password;
     private boolean admin;
 
-
     public User(String nam, boolean adm, String id, String pass) {
         name = nam;
         admin = adm;

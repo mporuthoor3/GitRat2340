@@ -1,0 +1,83 @@
+package a2340.m4_login;
+
+import android.util.Log;
+
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class LoadSightings {
+
+    private static ArrayList<RatSighting> rats;
+
+    public static void loadData(InputStream is) {
+
+        rats = new ArrayList<RatSighting>();
+
+        Scanner s = new Scanner(is);
+        String str;
+        String[] strs;
+        str = s.nextLine();
+
+        int count = 0;
+
+        int key;
+        String createdDate;
+        LocationType locType;
+        int incZip;
+        String incAdd;
+        City city;
+        Borough borough;
+        double latitude;
+        double longitude;
+
+        while (s.hasNext()) {
+            str = s.nextLine();
+            //Log.d("data", str);
+            strs = str.split(",");
+            if (strs[0].length() != 0) {
+                key = Integer.parseInt(strs[0]);
+            } else {
+                key = 35502335 + count;
+            }
+            if (strs[1].length() != 0) {
+                createdDate = strs[1];
+            } else {
+                createdDate = "unknown";
+            }
+            locType = LocationType.valueOf(LocationType.getNam(strs[7].toLowerCase()));
+            if (strs[8].length() != 0) {
+                incZip = Integer.parseInt(strs[8]);
+            } else {
+                incZip = 0;
+            }
+            if (strs[9].length() != 0) {
+                incAdd = strs[9];
+            } else {
+                incAdd = "unknown";
+            }
+            city = City.valueOf(City.getNam(strs[16].toLowerCase()));
+            borough = Borough.valueOf(Borough.getNam(strs[23].toLowerCase()));
+            if (strs.length >= 50 && strs[49].length() != 0) {
+                latitude = Double.parseDouble(strs[49]);
+            } else {
+                latitude = 0;
+            }
+            if (strs.length >= 51 && strs[50].length() != 0) {
+                longitude = Double.parseDouble(strs[50]);
+            } else {
+                longitude = 0;
+            }
+            RatSighting rat = new RatSighting(key, createdDate, locType, incZip, incAdd, city,
+                    borough, latitude, longitude);
+            Log.d("data", rat.toString());
+            rats.add(rat);
+            Log.d("data", ""+count+", "+s.hasNext());
+            count++;
+        }
+        Log.d("data", "endReal");
+    }
+
+}
