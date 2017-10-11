@@ -2,12 +2,12 @@ package a2340.m4_login;
 
 public enum Borough {
 
-    BRONX("bronx"),
-    BROOKLYN("brooklyn"),
-    MANHATTAN("manhattan"),
-    QUEENS("queens"),
-    STATENISLAND("staten island"),
-    UNSPECIFIED("unspecified");
+    BRONX("Bronx"),
+    BROOKLYN("Brooklyn"),
+    MANHATTAN("Manhattan"),
+    QUEENS("Queens"),
+    STATENISLAND("Staten Island"),
+    UNSPECIFIED("Unspecified");
 
     private String detail;
 

@@ -2,26 +2,26 @@ package a2340.m4_login;
 
 public enum LocationType {
 
-    FAMILYDWELLING("1-2 family dwelling"),
-    MIXBUILDING("1-2 family mixed use building"),
-    FAMILYAPT("3+ family apt. building"),
-    MIXBUILDING3("3+ family mixed use building"),
-    SEWER("catch basin/sewer"),
-    COMMBUILDING("commercial building"),
-    CONSTRUCTION("construction site"),
-    DAYCARE("day care/nursery"),
-    GOVTBUILDING("government building"),
-    HOSPITAL("hospital"),
-    OFFICEBUILDING("office building"),
-    PARKINGLOT("parking lot/garage"),
-    GARDEN("public garden"),
-    STAIRS("public stairs"),
-    SCHOOL("school/pre-school"),
-    SRO("single room occupancy (sro)"),
-    SUMMERCAMP("summer camp"),
-    UNSPECIFIED("unspecified"),
-    VACANTBUILDING("vacant building"),
-    VACANTLOT("vacant lot");
+    FAMILYDWELLING("1-2 Family Dwelling"),
+    MIXBUILDING("1-2 Family Mixed Use Building"),
+    FAMILYAPT("3+ Family Apt. Building"),
+    MIXBUILDING3("3+ Family Mixed Use Building"),
+    SEWER("Catch Basin/Sewer"),
+    COMMBUILDING("Commercial Building"),
+    CONSTRUCTION("Construction Site"),
+    DAYCARE("Day Care/Nursery"),
+    GOVTBUILDING("Government Building"),
+    HOSPITAL("Hospital"),
+    OFFICEBUILDING("Office Building"),
+    PARKINGLOT("Parking Lot/Garage"),
+    GARDEN("Public Garden"),
+    STAIRS("Public Stairs"),
+    SCHOOL("School/Pre-School"),
+    SRO("Single Room Occupancy (SRO)"),
+    SUMMERCAMP("Summer Camp"),
+    UNSPECIFIED("Unspecified"),
+    VACANTBUILDING("Vacant Building"),
+    VACANTLOT("Vacant Lot");
 
     private String detail;
 

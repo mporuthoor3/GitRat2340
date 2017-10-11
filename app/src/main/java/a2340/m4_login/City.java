@@ -2,21 +2,21 @@ package a2340.m4_login;
 
 public enum City {
 
-    BAYSIDE("bayside"),
-    BRONX("bronx"),
-    BROOKLYN("brooklyn"),
-    FLUSHING("flushing"),
-    JACKSON("jackson heights"),
-    JAMAICA("jamaica"),
-    LILNECK("little neck"),
-    MASPETH("maspeth"),
-    NEWYORK("new york"),
-    RIDGEWOOD("ridgewood"),
-    SOUTHHILL("south richmond hill"),
-    STATENISLAND("staten island"),
-    UNSPECIFIED("unspecified"),
-    WOODHAVEN("woodhaven"),
-    WOODSIDE("woodside");
+    BAYSIDE("Bayside"),
+    BRONX("Bronx"),
+    BROOKLYN("Brooklyn"),
+    FLUSHING("Flushing"),
+    JACKSON("Jackson Heights"),
+    JAMAICA("Jamaica"),
+    LILNECK("Little Neck"),
+    MASPETH("Maspeth"),
+    NEWYORK("New York"),
+    RIDGEWOOD("Ridgewood"),
+    SOUTHHILL("South Richmond Hill"),
+    STATENISLAND("Staten Island"),
+    UNSPECIFIED("Unspecified"),
+    WOODHAVEN("Woodhaven"),
+    WOODSIDE("Woodside");
 
     private String detail;
 
