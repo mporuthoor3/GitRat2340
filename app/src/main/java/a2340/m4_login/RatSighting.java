@@ -29,16 +29,32 @@ public class RatSighting implements Serializable{
 
     public String toString() {
         String str = "";
+        String inczip, longitud, latitud;
+        if(incZip == 0) {
+            inczip = "unknown";
+        } else {
+            inczip = "" + incZip;
+        }
+        if(longitude == 0) {
+            longitud = "unknown";
+        } else {
+            longitud = "" + longitude;
+        }
+        if(incZip == 0) {
+            latitud = "unknown";
+        } else {
+            latitud = "" + latitude;
+        }
+
         str += ("Key: " + key);
         str += (", Date Created: " + createdDate);
         str += (", Location Type: " + locType.getDetail());
-        str += (", Incident Zip: " + incZip);
+        str += (", Incident Zip: " + inczip);
         str += (", Incident Address: " + incAdd);
         str += (", City: " + city.getDetail());
         str += (", Borough: " + borough.getDetail());
-        str += (", Latitude: " + latitude);
-        str += (", Longitude: " + longitude);
+        str += (", Latitude: " + latitud);
+        str += (", Longitude: " + longitud);
         return str;
     }
-
 }
