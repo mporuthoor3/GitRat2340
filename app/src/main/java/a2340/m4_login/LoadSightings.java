@@ -14,8 +14,7 @@ public class LoadSightings {
 
     public static void loadData(InputStream is) {
 
-        rats = new ArrayList<RatSighting>();
-
+        SightingModel model = SightingModel.model;
         BufferedReader s = new BufferedReader(new InputStreamReader(is));
         String str;
         String[] strs;
@@ -48,7 +47,11 @@ public class LoadSightings {
                 }
                 locType = LocationType.valueOf(LocationType.getNam(strs[7].toLowerCase()));
                 if (strs[8].length() != 0) {
-                    incZip = Integer.parseInt(strs[8]);
+                    try {
+                        incZip = Integer.parseInt(strs[8]);
+                    } catch (NumberFormatException n) {
+                        incZip = 0;
+                    }
                 } else {
                     incZip = 0;
                 }
@@ -71,8 +74,8 @@ public class LoadSightings {
                 }
                 RatSighting rat = new RatSighting(key, createdDate, locType, incZip, incAdd, city,
                         borough, latitude, longitude);
-                Log.d("data", rat.toString());
-                rats.add(rat);
+                //Log.d("data", rat.toString());
+                model.addItem(rat);
                 Log.d("data", "" + count);
                 count++;
             }

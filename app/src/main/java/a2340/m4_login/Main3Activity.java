@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.InputStream;
 import java.util.Scanner;
 
 public class Main3Activity extends AppCompatActivity {
@@ -31,6 +32,12 @@ public class Main3Activity extends AppCompatActivity {
             }
         });
         readRatData = (Button) findViewById(R.id.readRatData);
+        readRatData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchActivity2();
+            }
+        });
     }
 
     @Override
@@ -42,5 +49,9 @@ public class Main3Activity extends AppCompatActivity {
     private void launchActivity() {
         Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);
+    }
+    private void launchActivity2() {
+        InputStream is = getResources().openRawResource(R.raw.rat_sightings);
+        LoadSightings.loadData(is);
     }
 }
