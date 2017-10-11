@@ -33,7 +33,6 @@ public class LoadSightings {
         try {
             str = s.readLine();
             while ((str = s.readLine()) != null) {
-                //Log.d("data", str);
                 strs = str.split(",");
                 if (strs[0].length() != 0) {
                     key = Integer.parseInt(strs[0]);
@@ -74,12 +73,10 @@ public class LoadSightings {
                 }
                 RatSighting rat = new RatSighting(key, createdDate, locType, incZip, incAdd, city,
                         borough, latitude, longitude);
-                //Log.d("data", rat.toString());
                 model.addItem(rat);
-                Log.d("data", "" + count);
                 count++;
             }
-            Log.d("data", "endReal");
+            Log.d("data", "end read in");
         } catch (IOException e) {
             e.printStackTrace();
         }
