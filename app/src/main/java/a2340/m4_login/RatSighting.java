@@ -27,34 +27,67 @@ public class RatSighting implements Serializable{
         longitude = lon;
     }
 
-    public String toString() {
-        String str = "";
-        String inczip, longitud, latitud;
-        if(incZip == 0) {
-            inczip = "unknown";
-        } else {
-            inczip = "" + incZip;
-        }
-        if(longitude == 0) {
-            longitud = "unknown";
-        } else {
-            longitud = "" + longitude;
-        }
-        if(incZip == 0) {
-            latitud = "unknown";
-        } else {
-            latitud = "" + latitude;
-        }
+    public String getKeyString() {
+        return "" + key;
+    }
 
-        str += ("Key: " + key);
-        str += (", Date Created: " + createdDate);
-        str += (", Location Type: " + locType.getDetail());
-        str += (", Incident Zip: " + inczip);
-        str += (", Incident Address: " + incAdd);
-        str += (", City: " + city.getDetail());
-        str += (", Borough: " + borough.getDetail());
-        str += (", Latitude: " + latitud);
-        str += (", Longitude: " + longitud);
+    public String getDateString() {
+        return createdDate;
+    }
+
+    public String getLocTypeString() {
+        return locType.getDetail();
+    }
+
+    public String getIncZipString() {
+        if(incZip == 0) {
+            return "unknown";
+        } else {
+            return "" + incZip;
+        }
+    }
+
+    public String getIncAddString() {
+        return incAdd;
+    }
+
+    public String getCityString() {
+        return city.getDetail();
+    }
+
+    public String getBoroughString() {
+        return borough.getDetail();
+    }
+
+    public String getLatString() {
+        if(latitude == 0.0) {
+            return "unknown";
+        } else {
+            return "" + latitude;
+        }
+    }
+
+    public String getLonString() {
+        if(longitude == 0.0) {
+            return "unknown";
+        } else {
+            return "" + longitude;
+        }
+    }
+
+
+    public String toString() {
+        String str = ("Incident " + key + ":\nOn " + createdDate + ", a rat was seen");
+        if(!locType.equals(LocationType.UNSPECIFIED)) {
+            str += (" in the " + locType.getDetail());
+        }
+        if (!incAdd.equals("unknown")) {
+            str += (" at " + incAdd);
+        }
+        if (!city.equals(City.UNSPECIFIED)) {
+            str += (" in the city of " + city.getDetail());
+        }
+        str += ".";
         return str;
     }
 }

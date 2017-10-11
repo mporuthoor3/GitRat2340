@@ -21,8 +21,15 @@
         android:id="@+id/readRatData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Read Rata Data"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:text="View Sighting Hstory" />
+
+    <Button
+        android:id="@+id/enter_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Enter New Data" />
 
     <Button
         android:id="@+id/Log_Out"
@@ -30,11 +37,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Log Out" />
-
-    <Button
-        android:id="@+id/enter_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Enter Data" />
 
 </LinearLayout>

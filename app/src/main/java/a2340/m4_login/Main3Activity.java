@@ -57,5 +57,7 @@ public class Main3Activity extends AppCompatActivity {
     private void launchActivity2() {
         InputStream is = getResources().openRawResource(R.raw.rat_sightings);
         LoadSightings.loadData(is);
+        Intent intent = new Intent(this, ListViewActivity.class);
+        startActivity(intent);
     }
 }
