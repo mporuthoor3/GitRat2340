@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="a2340.m4_login.Main3Activity">
+    tools:context="a2340.m4_login.Main3Activity"
+    android:baselineAligned="false">
 
     <TextView
         android:id="@+id/textView"
@@ -27,6 +28,13 @@
         android:id="@+id/Log_Out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Log Out"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:text="Log Out" />
+
+    <Button
+        android:id="@+id/enter_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter Data" />
+
 </LinearLayout>

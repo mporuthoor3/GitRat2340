@@ -17,9 +17,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Do not remove or run these lines
-        InputStream is = getResources().openRawResource(R.raw.rat_sightings);
-        LoadSightings.loadData(is);
         sign = (Button) findViewById(R.id.button);
         sign.setOnClickListener(new View.OnClickListener() {
             @Override
