@@ -15,6 +15,7 @@ public class Main3Activity extends AppCompatActivity {
     private Button logOut;
     private TextView text;
     private Button readRatData;
+    private  int alreadyRead = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,10 @@ public class Main3Activity extends AppCompatActivity {
         readRatData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                launchActivity2();
+                if (alreadyRead == 0){
+                    alreadyRead++;
+                    launchActivity2();
+                }
             }
         });
     }
