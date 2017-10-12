@@ -22,20 +22,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="View Sighting Hstory" />
+        android:text="View Rat Sightings" />
 
     <Button
         android:id="@+id/enter_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Enter New Data" />
+        android:text="Add New Report"
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:id="@+id/Log_Out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="15dp"
         android:text="Log Out" />
 
 </LinearLayout>
