@@ -36,9 +36,11 @@ public class Main3Activity extends AppCompatActivity {
         readRatData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (alreadyRead == 0){
+                if (SightingModel.model.getSightings().size() == 0){
                     alreadyRead++;
                     launchActivity2();
+                } else {
+                    launchActivity3();
                 }
             }
         });
@@ -60,4 +62,9 @@ public class Main3Activity extends AppCompatActivity {
         Intent intent = new Intent(this, ListViewActivity.class);
         startActivity(intent);
     }
+    private void launchActivity3() {
+        Intent intent = new Intent(this, ListViewActivity.class);
+        startActivity(intent);
+    }
+
 }

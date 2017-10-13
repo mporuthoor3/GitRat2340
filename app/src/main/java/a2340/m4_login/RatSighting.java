@@ -2,7 +2,7 @@ package a2340.m4_login;
 
 import java.io.Serializable;
 
-public class RatSighting implements Serializable{
+public class RatSighting implements Serializable {
 
     private int key;
     private String createdDate;
