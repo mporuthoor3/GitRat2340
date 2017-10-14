@@ -13,6 +13,7 @@ public class RatSighting implements Serializable {
     private Borough borough;
     private double latitude;
     private double longitude;
+    private static int key2 = 1;
 
     public RatSighting(int k, String cD, LocationType lT, int iZ, String iA,
                        City c, Borough b, double lat, double lon) {
@@ -89,5 +90,8 @@ public class RatSighting implements Serializable {
         }
         str += ".";
         return str;
+    }
+    public static int getKEY() {
+        return key2;
     }
 }

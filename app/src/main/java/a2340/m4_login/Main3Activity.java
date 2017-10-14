@@ -15,6 +15,7 @@ public class Main3Activity extends AppCompatActivity {
     private Button logOut;
     private TextView text;
     private Button readRatData;
+    private Button enterData;
     private  int alreadyRead = 0;
 
     @Override
@@ -44,6 +45,13 @@ public class Main3Activity extends AppCompatActivity {
                 }
             }
         });
+        enterData = (Button) findViewById(R.id.enter_data);
+        enterData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchEnterData();
+            }
+        });
     }
 
     @Override
@@ -64,6 +72,10 @@ public class Main3Activity extends AppCompatActivity {
     }
     private void launchActivity3() {
         Intent intent = new Intent(this, ListViewActivity.class);
+        startActivity(intent);
+    }
+    private void launchEnterData() {
+        Intent intent = new Intent(this, enterDataActivity.class);
         startActivity(intent);
     }
 
