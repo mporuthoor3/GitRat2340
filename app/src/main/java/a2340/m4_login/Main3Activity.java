@@ -37,7 +37,7 @@ public class Main3Activity extends AppCompatActivity {
         readRatData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (SightingModel.model.getSightings().size() == 0){
+                if (SightingModel.model.getSightings().size() <= 1){
                     alreadyRead++;
                     launchActivity2();
                 } else {

@@ -65,7 +65,7 @@ public class enterDataActivity extends AppCompatActivity {
                     SightingModel model = SightingModel.model;
 
 
-                    model.addToFront(r);
+                    model.addItem(r);
                 } catch (Exception e){
 
                 }
