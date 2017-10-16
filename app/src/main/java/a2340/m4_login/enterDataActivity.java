@@ -10,9 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class enterDataActivity extends AppCompatActivity {
-    private EditText date;
+    //private EditText date;
     private Spinner locType;
     private EditText zip;
     private EditText address;
@@ -38,11 +41,12 @@ public class enterDataActivity extends AppCompatActivity {
         cityType.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, City.values()));
         boroughType = (Spinner) findViewById(R.id.boroughSpinner);
         boroughType.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Borough.values()));
-        date = (EditText) findViewById(R.id.date_button);
+        //date = (EditText) findViewById(R.id.date_button);
         zip = (EditText) findViewById(R.id.zip);
         address = (EditText) findViewById(R.id.Address);
         lati = (EditText) findViewById(R.id.latitideText);
         longi = (EditText) findViewById(R.id.longitudeText);
+
 
 
 
@@ -52,7 +56,6 @@ public class enterDataActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    dt = date.getText().toString();
                     loc = LocationType.valueOf(locType.getSelectedItem().toString());
                     zp = Integer.parseInt(zip.getText().toString());
                     adr = address.getText().toString();
@@ -60,6 +63,8 @@ public class enterDataActivity extends AppCompatActivity {
                     br = Borough.valueOf(boroughType.getSelectedItem().toString());
                     latitude = Double.parseDouble(lati.getText().toString());
                     longitude = Double.parseDouble(longi.getText().toString());
+                    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                    dt = timestamp.toString();
                     RatSighting r = new RatSighting(RatSighting.getKEY(), dt, loc, zp, adr, ct, br, latitude, longitude);
 
                     SightingModel model = SightingModel.model;

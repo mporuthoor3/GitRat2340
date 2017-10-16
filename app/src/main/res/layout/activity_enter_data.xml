@@ -8,13 +8,13 @@
     tools:context="a2340.m4_login.Main3Activity"
     android:baselineAligned="false">
 
-    <EditText
-        android:id="@+id/date_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Date Sighted" />
+    <!--<EditText-->
+        <!--android:id="@+id/date_button"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:ems="10"-->
+        <!--android:inputType="textPersonName"-->
+        <!--android:text="Date Sighted" />-->
 
     <Spinner
         android:id="@+id/locSpinner"
