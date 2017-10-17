@@ -9,11 +9,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/**
+ * A controller class for ListView.
+ */
 public class ListViewActivity extends AppCompatActivity {
 
     private ListView lv;
     final Context context = this;
 
+    /**
+     * Sets layout view, inflates widgets, and adds a on-click listener to the ListView.
+     * @param savedInstanceState saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -46,6 +53,9 @@ public class ListViewActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Creates an intent to start Main3Activity.
+     */
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, Main3Activity.class);
