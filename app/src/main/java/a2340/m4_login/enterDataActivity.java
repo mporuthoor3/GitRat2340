@@ -1,21 +1,21 @@
 package a2340.m4_login;
 
 import android.content.Intent;
-import android.renderscript.Double2;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
+import java.sql.Timestamp;
+
+/**
+ * Allows users to add a new rat sighting to the ListView.
+ */
 public class enterDataActivity extends AppCompatActivity {
-    //private EditText date;
+
     private Spinner locType;
     private EditText zip;
     private EditText address;
@@ -31,6 +31,10 @@ public class enterDataActivity extends AppCompatActivity {
     private City ct;
     private Borough br;
 
+    /**
+     * Sets layout view, inflates widgets, and creates a listener for the submit button.
+     * @param savedInstanceState current state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,15 +45,10 @@ public class enterDataActivity extends AppCompatActivity {
         cityType.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, City.values()));
         boroughType = (Spinner) findViewById(R.id.boroughSpinner);
         boroughType.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Borough.values()));
-        //date = (EditText) findViewById(R.id.date_button);
         zip = (EditText) findViewById(R.id.zip);
         address = (EditText) findViewById(R.id.Address);
         lati = (EditText) findViewById(R.id.latitideText);
         longi = (EditText) findViewById(R.id.longitudeText);
-
-
-
-
 
         submit = (Button) findViewById(R.id.submit_Button);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -68,9 +67,7 @@ public class enterDataActivity extends AppCompatActivity {
                     RatSighting r = new RatSighting(RatSighting.getKEY(), dt, loc, zp, adr, ct, br, latitude, longitude);
 
                     SightingModel model = SightingModel.model;
-
-
-                    model.addItem(r);
+                    model.addToFront(r);
                 } catch (Exception e){
 
                 }
@@ -78,6 +75,10 @@ public class enterDataActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Creates an intent to start Main3Activity.
+     */
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, Main3Activity.class);

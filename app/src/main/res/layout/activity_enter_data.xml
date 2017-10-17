@@ -8,62 +8,70 @@
     tools:context="a2340.m4_login.Main3Activity"
     android:baselineAligned="false">
 
-    <!--<EditText-->
-        <!--android:id="@+id/date_button"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:ems="10"-->
-        <!--android:inputType="textPersonName"-->
-        <!--android:text="Date Sighted" />-->
-
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Rat Sighting"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"/>
     <Spinner
+        android:layout_marginTop="10dp"
         android:id="@+id/locSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
+        android:layout_marginLeft="5dp"
         android:id="@+id/zip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        android:text="ZIP" />
+        android:text="zip" />
 
     <EditText
+        android:layout_marginLeft="5dp"
         android:id="@+id/Address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Address" />
+        android:text="address" />
 
     <Spinner
+        android:layout_marginTop="10dp"
         android:id="@+id/citySpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Spinner
+        android:layout_marginTop="10dp"
         android:id="@+id/boroughSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
+        android:layout_marginLeft="5dp"
         android:id="@+id/latitideText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="numberDecimal"
-        android:text="Latitude" />
+        android:text="latitude" />
 
     <EditText
+        android:layout_marginLeft="5dp"
         android:id="@+id/longitudeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="numberDecimal"
-        android:text="Longitude" />
+        android:text="longitude" />
 
     <Button
+        android:layout_marginTop="10dp"
         android:id="@+id/submit_Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
