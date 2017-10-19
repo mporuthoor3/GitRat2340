@@ -13,6 +13,9 @@ import static a2340.m4_login.R.id.uniqueIdText;
  * Created by zlillie on 10/11/17.
  */
 
+/**
+ * A controller class for DetailView.
+ */
 public class DetailViewActivity extends AppCompatActivity {
     private TextView idText;
     private TextView createdDateText;
@@ -25,15 +28,21 @@ public class DetailViewActivity extends AppCompatActivity {
     private TextView longitudeText;
     private Button backButton;
 
+    /**
+     * Sets layout view, inflates widgets, and retrieves Intent information.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailview);
-
         inflateWidgets();
         retrieveIntentInfo();
     }
 
+    /**
+     * Inflates widgets that will appear on the DetailView.
+     */
     private void inflateWidgets() {
         idText = (TextView) findViewById(uniqueIdText);
         createdDateText = (TextView) findViewById(R.id.createdDateText);
@@ -54,6 +63,9 @@ public class DetailViewActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Gets information that was passed from ListViewActivity.
+     */
     private void retrieveIntentInfo() {
         String id = this.getIntent().getExtras().getString("id");
         idText.setText("ID: " + id);
@@ -83,6 +95,9 @@ public class DetailViewActivity extends AppCompatActivity {
         longitudeText.setText("LONGITUDE: " + longitude);
     }
 
+    /**
+     * Launches ListViewActivity when users press the back button.
+     */
     private void launchListViewActivity() {
         Intent intent = new Intent(DetailViewActivity.this, ListViewActivity.class);
         startActivity(intent);

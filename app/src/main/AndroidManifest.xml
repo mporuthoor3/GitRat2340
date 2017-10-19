@@ -21,6 +21,7 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ListViewActivity" />
         <activity android:name=".DetailViewActivity" />
+        <activity android:name=".enterDataActivity"></activity>
     </application>
 
 </manifest>

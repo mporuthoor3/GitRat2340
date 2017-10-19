@@ -15,6 +15,7 @@ public class Main3Activity extends AppCompatActivity {
     private Button logOut;
     private TextView text;
     private Button readRatData;
+    private Button enterData;
     private  int alreadyRead = 0;
 
     @Override
@@ -36,12 +37,19 @@ public class Main3Activity extends AppCompatActivity {
         readRatData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (SightingModel.model.getSightings().size() == 0){
+                if (SightingModel.model.getSightings().size() <= 1){
                     alreadyRead++;
                     launchActivity2();
                 } else {
                     launchActivity3();
                 }
+            }
+        });
+        enterData = (Button) findViewById(R.id.enter_data);
+        enterData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchEnterData();
             }
         });
     }
@@ -64,6 +72,10 @@ public class Main3Activity extends AppCompatActivity {
     }
     private void launchActivity3() {
         Intent intent = new Intent(this, ListViewActivity.class);
+        startActivity(intent);
+    }
+    private void launchEnterData() {
+        Intent intent = new Intent(this, enterDataActivity.class);
         startActivity(intent);
     }
 

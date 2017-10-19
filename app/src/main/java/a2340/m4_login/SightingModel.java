@@ -20,4 +20,8 @@ public class SightingModel {
         return sightings;
     }
 
+    public void addToFront(RatSighting r) {
+        sightings.add(0, r);
+    }
+
 }
