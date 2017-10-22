@@ -9,6 +9,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import java.util.ArrayList;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
 public class Main2Activity extends AppCompatActivity {
 
     private Button signIn, register;
@@ -21,10 +35,45 @@ public class Main2Activity extends AppCompatActivity {
     private static ArrayList<String> uNames = new ArrayList<String>();
     private static User curr;
 
+    LoginButton loginButton;
+    CallbackManager callbackManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        loginButton = (LoginButton) findViewById(R.id.login_button);
+        loginButton.setReadPermissions("email","public_profile");
+        callbackManager = CallbackManager.Factory.create();
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                String userid = loginResult.getAccessToken().getUserId();
+                GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        displayUserInfo(Object);
+                    }
+                });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields","first_name","last_name","email","id");
+                graphRequest.setParameters(parameters);
+                graphRequest.executeAsync();
+            }
+
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
 
         signIn = (Button) findViewById(R.id.Sign_In_Button);
         signIn.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +108,25 @@ public class Main2Activity extends AppCompatActivity {
             }
         } else {
             Notification.setText("Invalid User");
+        }
+    }
+
+    public void checkwithFB(String name) {
+        if (uNames.contains(user)) {
+            curr = findUser(user);
+            if (curr.getPass().equals(password)) {
+                Notification.setText("");
+                launchActivity();
+            } else {
+                curr = null;
+                Notification.setText("Login Unsuccessful");
+            }
+
+
+        } else {
+            Notification.setText("");
+            Main2Activity.addUser(new User(name, false, user, password));
+            launchActivity();
         }
     }
 
@@ -99,5 +167,41 @@ public class Main2Activity extends AppCompatActivity {
     private void launchActivity2() {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
+    }
+
+    public void displayUserInfo(JSONObject Object) {
+        String first_name, last_name, email,id;
+        first_name = "";
+        last_name = "";
+        email = "";
+        id = "";
+        try {
+            first_name = Object.getString("first_name");
+            last_name = Object.getString("last_name");
+            email = Object.getString("email");
+            id = Object.getString("id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        userField = (EditText) findViewById(R.id.User_Input);
+        passField = (EditText) findViewById(R.id.Password_Input);
+        userField.setText(first_name + "_"+ last_name);
+        String pass = (first_name+last_name+email+id);
+        int hashPass = pass.hashCode();
+        String passw = Integer.toString(hashPass);
+        passField.setText(passw);
+
+        user = userField.getText().toString();
+        password = passField.getText().toString();
+        Notification = (TextView) findViewById(R.id.Notif);
+
+        String tempName = first_name+ " "+ last_name;
+
+        checkwithFB(tempName);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }

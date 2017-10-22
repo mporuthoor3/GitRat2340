@@ -4,4 +4,6 @@
         <item>Standard User</item>
         <item>Admin</item>
     </string-array>
+    <string name="facebook_app_id">152190688723055</string>
+    <string name="fb_login_protocol_scheme">fb152190688723055</string>
 </resources>
