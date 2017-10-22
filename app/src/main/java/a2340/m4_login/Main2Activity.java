@@ -54,11 +54,11 @@ public class Main2Activity extends AppCompatActivity {
                 GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
-                        displayUserInfo(Object);
+                        displayUserInfo(object);
                     }
                 });
                 Bundle parameters = new Bundle();
-                parameters.putString("fields","first_name","last_name","email","id");
+                parameters.putString("fields","first_name, last_name,email,id");
                 graphRequest.setParameters(parameters);
                 graphRequest.executeAsync();
             }
