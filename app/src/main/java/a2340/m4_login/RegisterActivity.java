@@ -8,6 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.ArrayList;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -19,6 +24,8 @@ public class RegisterActivity extends AppCompatActivity {
     private Spinner adminSpinner;
     private TextView Notification;
 
+    private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference userRef = mRootRef.child("users");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             Notification.setText("");
             Main2Activity.addUser(new User(name, admin, user, password));
+            writeNewPost(name, admin, user, password);
             launchActivity();
         }
     }
@@ -57,6 +65,20 @@ public class RegisterActivity extends AppCompatActivity {
     private void launchActivity() {
         Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);
+    }
+
+    private void writeNewPost(String name, boolean admin, String user, String password) {
+        // Create new post at /user-posts/$userid/$postid and at
+        // /posts/$postid simultaneously
+        String key = userRef.push().getKey();
+        Post post = new Post(name, admin, user, password);
+        Map<String, Object> postValues = post.toMap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/posts/" + key, postValues);
+
+        userRef.updateChildren(childUpdates);
+
     }
 
 }
