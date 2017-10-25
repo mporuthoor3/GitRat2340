@@ -10,7 +10,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.ArrayList;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

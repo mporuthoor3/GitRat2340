@@ -10,7 +10,6 @@ import java.util.Map;
 public class Post {
     public String name, user, password;
     public boolean admin;
-    public Map<String, Boolean> stars = new HashMap<>();
 
     public Post() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)

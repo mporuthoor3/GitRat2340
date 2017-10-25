@@ -10,6 +10,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Allows users to add a new rat sighting to the ListView.
@@ -31,6 +36,8 @@ public class enterDataActivity extends AppCompatActivity {
     private City ct;
     private Borough br;
 
+    private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference ReportRef = mRootRef.child("ratReports");
     /**
      * Sets layout view, inflates widgets, and creates a listener for the submit button.
      * @param savedInstanceState current state
@@ -65,7 +72,7 @@ public class enterDataActivity extends AppCompatActivity {
                     Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                     dt = timestamp.toString();
                     RatSighting r = new RatSighting(RatSighting.getKEY(), dt, loc, zp, adr, ct, br, latitude, longitude);
-
+                    writeNewPost(RatSighting.getKEY(), dt, loc, zp, adr, ct, br, latitude, longitude);
                     SightingModel model = SightingModel.model;
                     model.addToFront(r);
                 } catch (Exception e){
@@ -83,5 +90,20 @@ public class enterDataActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent(this, Main3Activity.class);
         startActivity(intent);
+    }
+
+    private void writeNewPost(int k, String cD, LocationType lT, int iZ, String iA,
+                              City c, Borough b, double lat, double lon) {
+        // Create new post at /user-posts/$userid/$postid and at
+        // /posts/$postid simultaneously
+        String key = ReportRef.push().getKey();
+        ReportPost reportPost = new ReportPost(k, cD, lT, iZ, iA, c, b, lat, lon);
+        Map<String, Object> postValues = reportPost.toMap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/posts/" + key, postValues);
+
+        ReportRef.updateChildren(childUpdates);
+
     }
 }
