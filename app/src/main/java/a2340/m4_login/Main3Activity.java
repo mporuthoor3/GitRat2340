@@ -8,6 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -17,6 +23,8 @@ public class Main3Activity extends AppCompatActivity {
     private Button readRatData;
     private Button enterData;
     private  int alreadyRead = 0;
+    private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference ReportRef = mRootRef.child("ratReports").child("posts");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +85,38 @@ public class Main3Activity extends AppCompatActivity {
     private void launchEnterData() {
         Intent intent = new Intent(this, enterDataActivity.class);
         startActivity(intent);
+    }
+
+    protected void onStart() {
+        super.onStart();
+        ReportRef.orderByChild("user").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                ReportPost reportPost = dataSnapshot.getValue(ReportPost.class);
+                SightingModel.model.getSightings().add(new RatSighting(reportPost.key, reportPost.createdDate, reportPost.locType,
+                        reportPost.incZip, reportPost.incAdd, reportPost.city, reportPost.borough, reportPost.latitude, reportPost.longitude));
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }
