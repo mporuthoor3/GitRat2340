@@ -89,7 +89,7 @@ public class Main3Activity extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
-        ReportRef.orderByChild("user").addChildEventListener(new ChildEventListener() {
+        ReportRef.orderByChild("key").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 ReportPost reportPost = dataSnapshot.getValue(ReportPost.class);
