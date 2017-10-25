@@ -60,6 +60,7 @@ public class Main3Activity extends AppCompatActivity {
                 launchEnterData();
             }
         });
+
     }
 
     @Override
@@ -87,14 +88,15 @@ public class Main3Activity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     protected void onStart() {
         super.onStart();
-        ReportRef.orderByChild("key").addChildEventListener(new ChildEventListener() {
+        ReportRef.orderByChild("createdDate").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                ReportPost reportPost = dataSnapshot.getValue(ReportPost.class);
-                SightingModel.model.getSightings().add(new RatSighting(reportPost.key, reportPost.createdDate, reportPost.locType,
-                        reportPost.incZip, reportPost.incAdd, reportPost.city, reportPost.borough, reportPost.latitude, reportPost.longitude));
+                ReportPost reportpost = dataSnapshot.getValue(ReportPost.class);
+                SightingModel.model.addItem(new RatSighting(reportpost.key, reportpost.createdDate, reportpost.locType, reportpost.incZip,
+                        reportpost.incAdd, reportpost.city, reportpost.borough, reportpost.latitude, reportpost.longitude));
             }
 
             @Override
@@ -118,5 +120,7 @@ public class Main3Activity extends AppCompatActivity {
             }
         });
     }
+
+
 
 }
