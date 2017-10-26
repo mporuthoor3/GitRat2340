@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class HomeActivity extends AppCompatActivity {
+
     private Button logOut;
     private TextView text;
     private Button readRatData;
@@ -25,14 +26,27 @@ public class HomeActivity extends AppCompatActivity {
     private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference ReportRef = mRootRef.child("ratReports").child("posts");
 
+    /**
+     * Sets layout view.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
+        inflateWidgets();
+    }
+
+    /**
+     * Inflates widgets.
+     */
+    private void inflateWidgets() {
+
         text = (TextView) findViewById(R.id.textView);
         Scanner s = new Scanner(UserActivity.getCurr().getName());
         text.setText("Welcome, " + s.next());
+
         logOut = (Button) findViewById(R.id.Log_Out);
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
                 launchActivity();
             }
         });
+
         readRatData = (Button) findViewById(R.id.readRatData);
         readRatData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +67,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
+
         enterData = (Button) findViewById(R.id.enter_data);
         enterData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,9 +75,11 @@ public class HomeActivity extends AppCompatActivity {
                 launchEnterData();
             }
         });
-
     }
 
+    /**
+     * Launch activities.
+     */
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(this, UserActivity.class);

@@ -39,13 +39,22 @@ public class EnterDataActivity extends AppCompatActivity {
     private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference ReportRef = mRootRef.child("ratReports");
     /**
-     * Sets layout view, inflates widgets, and creates a listener for the submit button.
+     * Sets layout view.
      * @param savedInstanceState current state
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_data);
+
+        inflateWidgets();
+        userClick();
+    }
+
+    /**
+     * Inflates widgets.
+     */
+    private void inflateWidgets() {
         locType = (Spinner) findViewById(R.id.locSpinner);
         locType.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, LocationType.values()));
         cityType = (Spinner) findViewById(R.id.citySpinner);
@@ -56,9 +65,17 @@ public class EnterDataActivity extends AppCompatActivity {
         address = (EditText) findViewById(R.id.Address);
         lati = (EditText) findViewById(R.id.latitideText);
         longi = (EditText) findViewById(R.id.longitudeText);
-
         submit = (Button) findViewById(R.id.submit_Button);
+
+    }
+
+    /**
+     * Listens for user inputs.
+     */
+    private void userClick() {
+
         submit.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 try {
@@ -76,7 +93,7 @@ public class EnterDataActivity extends AppCompatActivity {
                     SightingModel model = SightingModel.model;
                     model.addToFront(r);
                 } catch (Exception e){
-
+                    // do nothing
                 }
                 onBackPressed();
             }
@@ -84,7 +101,7 @@ public class EnterDataActivity extends AppCompatActivity {
     }
 
     /**
-     * Creates an intent to start Main3Activity.
+     * Creates an intent to go back to HomeActivity.
      */
     @Override
     public void onBackPressed() {
@@ -92,10 +109,24 @@ public class EnterDataActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Creates a new rat report.
+     * @param k
+     * @param cD
+     * @param lT
+     * @param iZ
+     * @param iA
+     * @param c
+     * @param b
+     * @param lat
+     * @param lon
+     */
     private void writeNewPost(int k, String cD, LocationType lT, int iZ, String iA,
                               City c, Borough b, double lat, double lon) {
+
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
+
         String key = ReportRef.push().getKey();
         ReportPost reportPost = new ReportPost(k, cD, lT, iZ, iA, c, b, lat, lon);
         Map<String, Object> postValues = reportPost.toMap();

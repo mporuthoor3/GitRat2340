@@ -9,6 +9,7 @@ import java.util.Map;
  */
 
 public class ReportPost {
+
     public int key;
     public String createdDate;
     public LocationType locType;
@@ -38,6 +39,7 @@ public class ReportPost {
     }
 
     public Map<String, Object> toMap() {
+
         HashMap<String, Object> result = new HashMap<>();
         result.put("key", key);
         result.put("createdDate", createdDate);
