@@ -61,8 +61,10 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (SightingModel.model.getSightings().size() <= 1){
                     alreadyRead++;
+                    add();
                     launchActivity2();
                 } else {
+
                     launchActivity3();
                 }
             }
@@ -105,14 +107,12 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    protected void onStart() {
-        super.onStart();
+    private void add() {
         ReportRef.orderByChild("createdDate").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 ReportPost reportpost = dataSnapshot.getValue(ReportPost.class);
-                SightingModel.model.addItem(new RatSighting(reportpost.key, reportpost.createdDate, reportpost.locType, reportpost.incZip,
+                SightingModel.model.addToFront(new RatSighting(reportpost.key, reportpost.createdDate, reportpost.locType, reportpost.incZip,
                         reportpost.incAdd, reportpost.city, reportpost.borough, reportpost.latitude, reportpost.longitude));
             }
 
@@ -137,7 +137,31 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+        /**
+         protected void onStart() {
+         super.onStart();
+         ReportRef.orderByChild("createdDate").addChildEventListener(new ChildEventListener() {
+        @Override public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+        ReportPost reportpost = dataSnapshot.getValue(ReportPost.class);
+        //SightingModel.model.addItem(new RatSighting(reportpost.key, reportpost.createdDate, reportpost.locType, reportpost.incZip,
+        //reportpost.incAdd, reportpost.city, reportpost.borough, reportpost.latitude, reportpost.longitude));
+        }
 
+        @Override public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
+        }
 
-}
+        @Override public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+        }
+
+        @Override public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+        }
+
+        @Override public void onCancelled(DatabaseError databaseError) {
+
+        }
+        });
+         }*/
+    }

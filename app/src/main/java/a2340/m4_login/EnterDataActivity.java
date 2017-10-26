@@ -16,6 +16,8 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.R.attr.key;
+
 /**
  * Allows users to add a new rat sighting to the ListView.
  */
@@ -88,10 +90,12 @@ public class EnterDataActivity extends AppCompatActivity {
                     longitude = Double.parseDouble(longi.getText().toString());
                     Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                     dt = timestamp.toString();
-                    RatSighting r = new RatSighting(RatSighting.getKEY(), dt, loc, zp, adr, ct, br, latitude, longitude);
-                    writeNewPost(RatSighting.getKEY(), dt, loc, zp, adr, ct, br, latitude, longitude);
-                    SightingModel model = SightingModel.model;
-                    model.addToFront(r);
+
+                    //RatSighting r = new RatSighting(key, dt, loc, zp, adr, ct, br, latitude, longitude);
+                    writeNewPost(key, dt, loc, zp, adr, ct, br, latitude, longitude);
+
+                    //SightingModel model = SightingModel.model;
+                    //model.addToFront(r);
                 } catch (Exception e){
                     // do nothing
                 }
@@ -128,6 +132,7 @@ public class EnterDataActivity extends AppCompatActivity {
         // /posts/$postid simultaneously
 
         String key = ReportRef.push().getKey();
+        System.out.println(key);
         ReportPost reportPost = new ReportPost(k, cD, lT, iZ, iA, c, b, lat, lon);
         Map<String, Object> postValues = reportPost.toMap();
 

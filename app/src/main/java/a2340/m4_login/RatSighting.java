@@ -150,8 +150,7 @@ public class RatSighting implements Serializable {
      * Returns an integer representation of a unique key.
      * @return key
      */
-    public static int getKEY() {
-        counter += 1;
-        return counter;
+    public int getKEY() {
+        return key;
     }
 }

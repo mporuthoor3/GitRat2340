@@ -9,12 +9,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 
 public class LoadSightings {
 
-    private static ArrayList<RatSighting> rats;
+    //private static ArrayList<RatSighting> rats;
     private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference ReportRef = mRootRef.child("ratReports").child("posts");
 
