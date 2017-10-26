@@ -9,17 +9,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 /**
  * Allows users to add a new rat sighting to the ListView.
  */
-public class enterDataActivity extends AppCompatActivity {
+public class EnterDataActivity extends AppCompatActivity {
 
     private Spinner locType;
     private EditText zip;
@@ -88,7 +88,7 @@ public class enterDataActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, Main3Activity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 

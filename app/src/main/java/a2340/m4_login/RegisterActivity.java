@@ -1,17 +1,19 @@
 package a2340.m4_login;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import java.util.Map;
-import java.util.HashMap;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -50,19 +52,19 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void check() {
-        if (Main2Activity.getNames().contains(user)) {
+        if (UserActivity.getNames().contains(user)) {
             Notification.setText("Invalid User");
             return;
         } else {
             Notification.setText("");
-            Main2Activity.addUser(new User(name, admin, user, password));
+            UserActivity.addUser(new User(name, admin, user, password));
             writeNewPost(name, admin, user, password);
             launchActivity();
         }
     }
 
     private void launchActivity() {
-        Intent intent = new Intent(this, Main2Activity.class);
+        Intent intent = new Intent(this, UserActivity.class);
         startActivity(intent);
     }
 
