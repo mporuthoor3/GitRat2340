@@ -15,7 +15,7 @@ public class LoadSightings {
 
     //private static ArrayList<RatSighting> rats;
     private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
-    private DatabaseReference ReportRef = mRootRef.child("ratReports").child("posts");
+    //private DatabaseReference ReportRef = mRootRef.child("ratReports").child("posts");
 
 
     public static void loadData(InputStream is) {

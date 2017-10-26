@@ -22,7 +22,9 @@ public class HomeActivity extends AppCompatActivity {
     private TextView text;
     private Button readRatData;
     private Button enterData;
-    private  int alreadyRead = 0;
+    private Button displayGoogleMaps;
+
+    //private  int alreadyRead = 0;
     private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference ReportRef = mRootRef.child("ratReports").child("posts");
 
@@ -60,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (SightingModel.model.getSightings().size() <= 1){
-                    alreadyRead++;
+                    //alreadyRead++;
                     add();
                     launchActivity2();
                 } else {
@@ -75,6 +77,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 launchEnterData();
+            }
+        });
+
+        displayGoogleMaps = (Button) findViewById(R.id.displayGoogleMaps);
+        displayGoogleMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchGoogleMaps();
             }
         });
     }
@@ -105,6 +115,10 @@ public class HomeActivity extends AppCompatActivity {
     private void launchEnterData() {
         Intent intent = new Intent(this, EnterDataActivity.class);
         startActivity(intent);
+    }
+
+    private void launchGoogleMaps() {
+        //
     }
 
     private void add() {
