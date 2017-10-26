@@ -118,7 +118,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void launchGoogleMaps() {
-        //
+        Intent intent = new Intent(this, FilterDataActivity.class);
+        startActivity(intent);
     }
 
     private void add() {
