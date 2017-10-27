@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/gitrat.iml" filepath="$PROJECT_DIR$/gitrat.iml" />
       <module fileurl="file://$PROJECT_DIR$/gitrat-database.iml" filepath="$PROJECT_DIR$/gitrat-database.iml" />
       <module fileurl="file://$PROJECT_DIR$/gitrat-firebase.iml" filepath="$PROJECT_DIR$/gitrat-firebase.iml" />
