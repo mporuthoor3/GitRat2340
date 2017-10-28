@@ -8,11 +8,19 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * Created by Lillie Zhou, 10/26/17
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private static final LatLng NEWYORKCITY = new LatLng(40.715076, -73.99);
+
+    private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference userRef = mRootRef.child("ratReports");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,5 +50,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //LatLng nyc = new LatLng(40.730610, -74.935242);
         //mMap.addMarker(new MarkerOptions().position(nyc).title("Marker in NYC"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(NEWYORKCITY, 12));
+
+        //userRef.orderByChild("date").startAt(initialDate).endAt(finalDate).limitToLast(50);
+
     }
 }
