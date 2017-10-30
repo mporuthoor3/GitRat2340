@@ -2,15 +2,21 @@ package a2340.m4_login;
 
 import android.util.Log;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+
 
 public class LoadSightings {
 
-    private static ArrayList<RatSighting> rats;
+    //private static ArrayList<RatSighting> rats;
+    private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+    //private DatabaseReference ReportRef = mRootRef.child("ratReports").child("posts");
+
 
     public static void loadData(InputStream is) {
 
@@ -29,6 +35,7 @@ public class LoadSightings {
         Borough borough;
         double latitude;
         double longitude;
+
 
         try {
             str = s.readLine();
@@ -80,5 +87,7 @@ public class LoadSightings {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
+
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="a2340.m4_login.Main3Activity"
+    tools:context="a2340.m4_login.HomeActivity"
     android:baselineAligned="false">
 
     <TextView
@@ -19,11 +19,19 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <Button
+        android:id="@+id/displayGoogleMaps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Display Google Maps" />
+
+    <Button
         android:id="@+id/readRatData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="View Rat Sightings" />
+        android:text="View Rat Sightings"
+        android:layout_marginTop="15dp" />
 
     <Button
         android:id="@+id/enter_data"

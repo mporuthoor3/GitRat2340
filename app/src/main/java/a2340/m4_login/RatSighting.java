@@ -16,7 +16,7 @@ public class RatSighting implements Serializable {
     private Borough borough;
     private double latitude;
     private double longitude;
-    private static int key2 = 1;
+    private static int counter;
 
     /**
      * Creates an instance of RatSighting.
@@ -150,7 +150,7 @@ public class RatSighting implements Serializable {
      * Returns an integer representation of a unique key.
      * @return key
      */
-    public static int getKEY() {
-        return key2;
+    public int getKEY() {
+        return key;
     }
 }

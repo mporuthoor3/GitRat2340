@@ -1,25 +1,20 @@
 package a2340.m4_login;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import java.util.ArrayList;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import java.util.ArrayList;
-
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,8 +24,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 
-public class Main2Activity extends AppCompatActivity {
+
+public class UserActivity extends AppCompatActivity {
 
     private Button signIn, register;
     private EditText userField;
@@ -38,22 +35,25 @@ public class Main2Activity extends AppCompatActivity {
     private TextView Notification;
     private String user;
     private String password;
-    private static ArrayList<User> users = new ArrayList<User>();
+
+    private static ArrayList<User> users = new ArrayList<>();
     private static ArrayList<String> uNames = new ArrayList<String>();
     private static User curr;
+
     private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference userRef = mRootRef.child("users").child("posts");
     LoginButton loginButton;
     CallbackManager callbackManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions("email","public_profile");
+
         callbackManager = CallbackManager.Factory.create();
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -104,6 +104,12 @@ public class Main2Activity extends AppCompatActivity {
         });
     }
 
+    private void inflateWidgets() {
+
+        loginButton = (LoginButton) findViewById(R.id.login_button);
+
+    }
+
     public void check() {
         if (uNames.contains(user)) {
             curr = findUser(user);
@@ -133,7 +139,7 @@ public class Main2Activity extends AppCompatActivity {
 
         } else {
             Notification.setText("");
-            Main2Activity.addUser(new User(name, false, user, password));
+            UserActivity.addUser(new User(name, false, user, password));
             launchActivity();
         }
     }
@@ -163,12 +169,12 @@ public class Main2Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
     }
 
     private void launchActivity() {
-        Intent intent = new Intent(this, Main3Activity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 
@@ -219,7 +225,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 Post post = dataSnapshot.getValue(Post.class);
-                Main2Activity.addUser(new User(post.name, post.admin, post.user, post.password));
+                UserActivity.addUser(new User(post.name, post.admin, post.user, post.password));
             }
 
             @Override

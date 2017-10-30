@@ -8,7 +8,7 @@ public class SightingModel {
     public static final SightingModel model = new SightingModel();
     private List<RatSighting> sightings;
 
-    public SightingModel() {
+    public SightingModel()    {
         sightings = new ArrayList<RatSighting>();
     }
 
@@ -21,6 +21,7 @@ public class SightingModel {
     }
 
     public void addToFront(RatSighting r) {
+
         sightings.add(0, r);
     }
 
