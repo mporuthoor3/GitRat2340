@@ -1,5 +1,8 @@
 package a2340.m4_login;
 
+/**
+ * public enu class for the location
+ */
 public enum LocationType {
 
     FAMILYDWELLING("1-2 Family Dwelling"),
@@ -29,10 +32,19 @@ public enum LocationType {
         detail = det;
     }
 
+    /**
+     *
+     * @return this location's detail
+     */
     public String getDetail() {
         return detail;
     }
 
+    /**
+     *
+     * @param str is this enum's new location value
+     * @return this location as a string
+     */
     public static String getNam(String str) {
         if (str.equals("1-2 family dwelling")) {
             return "FAMILYDWELLING";

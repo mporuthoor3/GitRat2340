@@ -21,10 +21,25 @@ public class ReportPost {
     public double longitude;
     public static int key2 = 1;
 
+    /**
+     * default constructor
+     */
     public ReportPost() {
         // Default constructor required for calls to DataSnapshot.getValue(ReportPost.class)
     }
 
+    /**
+     *
+     * @param k is the kay
+     * @param cD is the create date
+     * @param lT is teh location
+     * @param iZ is the incident zip
+     * @param iA is the indident adress
+     * @param c is the city
+     * @param b is the boroough
+     * @param lat is the latitude
+     * @param lon is the longitude
+     */
     public ReportPost(int k, String cD, LocationType lT, int iZ, String iA,
                       City c, Borough b, double lat, double lon) {
         key = k;
@@ -39,6 +54,10 @@ public class ReportPost {
         longitude = lon;
     }
 
+    /**
+     *
+     * @return a map of teh above combined items
+     */
     public Map<String, Object> toMap() {
 
         HashMap<String, Object> result = new HashMap<>();

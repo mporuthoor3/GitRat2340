@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 
-
+/**
+ * public class for filtering data
+ */
 public class FilterGraphDataActivity extends AppCompatActivity {
     Button filterData;
     DatePicker startDate;

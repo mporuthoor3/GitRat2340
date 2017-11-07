@@ -23,6 +23,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * public class for the graphs
+ */
 public class GraphActivity extends AppCompatActivity{
 
     private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -31,10 +34,6 @@ public class GraphActivity extends AppCompatActivity{
     private GraphView graph;
     DataPoint[] pnts;
 
-    /**
-     * Sets layout view.
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,5 +1,8 @@
 package a2340.m4_login;
 
+/**
+ * public enum for the city class
+ */
 public enum City {
 
     BAYSIDE("Bayside"),
@@ -24,10 +27,19 @@ public enum City {
         detail = det;
     }
 
+    /**
+     *
+     * @return the city's detial string
+     */
     public String getDetail() {
         return detail;
     }
 
+    /**
+     *
+     * @param str is the city's new enum value
+     * @return the city's enum as a string
+     */
     public static String getNam(String str) {
         if (str.equals("bayside")) {
             return "BAYSIDE";

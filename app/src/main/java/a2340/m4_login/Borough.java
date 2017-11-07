@@ -1,5 +1,8 @@
 package a2340.m4_login;
 
+/**
+ * public enum for the borough class
+ */
 public enum Borough {
 
     BRONX("Bronx"),
@@ -15,10 +18,19 @@ public enum Borough {
         detail = det;
     }
 
+    /**
+     *
+     * @return return the borough's detail String
+     */
     public String getDetail() {
         return detail;
     }
 
+    /**
+     *
+     * @param str is the enum's value
+     * @return the enum's string
+     */
     public static String getNam(String str) {
         if (str.equals("bronx")) {
             return "BRONX";

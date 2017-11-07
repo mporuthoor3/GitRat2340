@@ -16,6 +16,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.InputStream;
 import java.util.Scanner;
 
+/**
+ * base home class for the gitrat project
+ */
 public class HomeActivity extends AppCompatActivity {
 
     private Button logOut;
@@ -29,10 +32,6 @@ public class HomeActivity extends AppCompatActivity {
     private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference ReportRef = mRootRef.child("ratReports").child("posts");
 
-    /**
-     * Sets layout view.
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -171,31 +170,4 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-        /**
-         protected void onStart() {
-         super.onStart();
-         ReportRef.orderByChild("createdDate").addChildEventListener(new ChildEventListener() {
-        @Override public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-        ReportPost reportpost = dataSnapshot.getValue(ReportPost.class);
-        //SightingModel.model.addItem(new RatSighting(reportpost.key, reportpost.createdDate, reportpost.locType, reportpost.incZip,
-        //reportpost.incAdd, reportpost.city, reportpost.borough, reportpost.latitude, reportpost.longitude));
-        }
-
-        @Override public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-        }
-
-        @Override public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-        }
-
-        @Override public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-        }
-
-        @Override public void onCancelled(DatabaseError databaseError) {
-
-        }
-        });
-         }*/
-    }
+}
