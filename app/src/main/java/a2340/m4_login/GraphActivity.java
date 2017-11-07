@@ -31,6 +31,7 @@ public class GraphActivity extends AppCompatActivity{
     private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference userRef = mRootRef.child("ratReports").child("posts");
     //private DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("ratReports");
+
     private GraphView graph;
     DataPoint[] pnts;
 
@@ -97,12 +98,13 @@ public class GraphActivity extends AppCompatActivity{
         for (int x = 0; x < months.size(); x++) {
             vals.add(0);
         }
-        int max = 5000, count = 0;
+        int max = 50000, count = 0;
 
         for (int x = 0; x < rats.size(); x++) {
             if (count >= max) {
                 break;
             } else {
+
                 int temp = checkDate(rats.get(x).getDateString(), initialDate, finalDate);
                 if (temp != -1) {
                     int temp2 = vals.get(temp);
@@ -115,7 +117,6 @@ public class GraphActivity extends AppCompatActivity{
         pnts = new DataPoint[months.size()];
         for (int x = 0; x < months.size(); x++) {
             pnts[x] = new DataPoint(months.get(x), vals.get(x));
-           // Log.d("data", months.get(x).toString() + " #"+vals.get(x));
         }
 
         graph = (GraphView) findViewById(R.id.graph);
@@ -128,7 +129,7 @@ public class GraphActivity extends AppCompatActivity{
 
         // set date label formatter
         graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(this));
-        graph.getGridLabelRenderer().setNumHorizontalLabels(2); // only 2 because of the space
+        graph.getGridLabelRenderer().setNumHorizontalLabels(3); // only 2 because of the space
 
 // set manual x bounds to have nice steps
         try {
@@ -150,22 +151,23 @@ public class GraphActivity extends AppCompatActivity{
             if (temp.substring(0,2).equals(str2.substring(0,2)) &&
                     temp.substring(6,10).equals(str2.substring(6,10))) {
                 temp2 = false;
-            } else {
-                try{
-                    dates.add(new java.text.SimpleDateFormat("MM/dd/yyyy").parse(temp.substring(0,10)));
-                    Log.d("dates", new java.text.SimpleDateFormat("MM/dd/yyyy").parse(temp.substring(0,10)).toString());
-                    temp = incMonth(temp);
-                } catch (ParseException p) {
+            }
+            try{
+                dates.add(new java.text.SimpleDateFormat("MM/dd/yyyy").parse(temp.substring(0,10)));
+                temp = incMonth(temp);
+            } catch (ParseException p) {
 
-                }
             }
         }
     }
 
+    /**
+     * increments the month of a given date string
+     */
     private String incMonth(String str) {
         String str2 = str;
         if(Integer.parseInt(str2.substring(0,2)) == 12) {
-            str2 = "01/" + str2.substring(3,5) + (Integer.parseInt(str2.substring(6,10))+1) + str2.substring(10);
+            str2 = "01/" + str2.substring(3,6) + (Integer.parseInt(str2.substring(6,10))+1) + str2.substring(10);
         } else {
             int num = Integer.parseInt(str2.substring(0,2))+1;
             str2 = (num<=9?"0"+num:String.valueOf(num)) + str2.substring(2);
@@ -173,7 +175,13 @@ public class GraphActivity extends AppCompatActivity{
         return str2;
     }
 
+    /**
+     * checks whether or not the given date is within the bounds
+     */
     private int checkDate(String date, String start, String end) {
+        if (date.length() < 10 || date.charAt(2) != '/' || date.charAt(5) != '/') {
+            return -1;
+        }
         int dt, st, nd;
         dt = Integer.parseInt(date.substring(6,10)+date.substring(0,2)+date.substring(3,5));
         st = Integer.parseInt(start.substring(6,10)+start.substring(0,2)+start.substring(3,5));
