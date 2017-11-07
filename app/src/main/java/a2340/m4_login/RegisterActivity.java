@@ -15,7 +15,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * public
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private Button register;

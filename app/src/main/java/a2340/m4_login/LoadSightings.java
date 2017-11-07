@@ -10,14 +10,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-
+/**
+ * public class used to load sightings for the listview and other classes
+ */
 public class LoadSightings {
 
     //private static ArrayList<RatSighting> rats;
     private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     //private DatabaseReference ReportRef = mRootRef.child("ratReports").child("posts");
 
-
+    /**
+     * starts to parse a file to add to teh database
+     * @param is is the text or csv file
+     */
     public static void loadData(InputStream is) {
 
         SightingModel model = SightingModel.model;

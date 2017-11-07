@@ -115,15 +115,15 @@ public class EnterDataActivity extends AppCompatActivity {
 
     /**
      * Creates a new rat report.
-     * @param k
-     * @param cD
-     * @param lT
-     * @param iZ
-     * @param iA
-     * @param c
-     * @param b
-     * @param lat
-     * @param lon
+     * @param k is the ratSighting's key
+     * @param cD is created date
+     * @param lT is the location type
+     * @param iZ is the incident zip
+     * @param iA is the incident adress
+     * @param c is the city
+     * @param b if the borough
+     * @param lat is the latitude
+     * @param lon is the longitude
      */
     private void writeNewPost(int k, String cD, LocationType lT, int iZ, String iA,
                               City c, Borough b, double lat, double lon) {

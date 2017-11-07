@@ -26,7 +26,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-
+/**
+ * the base user sign in
+ */
 public class UserActivity extends AppCompatActivity {
 
     private Button signIn, register;
@@ -110,6 +112,9 @@ public class UserActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * check for valid input
+     */
     public void check() {
         if (uNames.contains(user)) {
             curr = findUser(user);
@@ -125,6 +130,10 @@ public class UserActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * check FB authentication
+     * @param name is the user's name
+     */
     public void checkwithFB(String name) {
         if (uNames.contains(user)) {
             curr = findUser(user);
@@ -144,6 +153,12 @@ public class UserActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * find the user in the database
+     * @param use is the user
+     * @return the user object if found, return null if
+     * not found
+     */
     private User findUser(String use) {
         for(int x = 0; x < users.size(); x++) {
             if (users.get(x).getUser().equals(use)) {
@@ -153,16 +168,29 @@ public class UserActivity extends AppCompatActivity {
         return null;
     }
 
+    /**
+     * return the user names on the form of an array
+     * @return the array of names
+     */
     public static ArrayList<String> getNames() {
         return uNames;
     }
 
+    /**
+     * add a new user
+     * @param person is the person we want to convert into
+     *               a user
+     */
     public static void addUser(User person) {
         users.add(person);
         uNames.add(person.getUser());
 
     }
 
+    /**
+     * return the current user
+     * @return the curent user
+     */
     public static User getCurr() {
         return curr;
     }
@@ -173,16 +201,26 @@ public class UserActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * go to home
+     */
     private void launchActivity() {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * register a new user
+     */
     private void launchActivity2() {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * diplsya the user's info
+     * @param Object is the database object
+     */
     public void displayUserInfo(JSONObject Object) {
         String first_name, last_name, email,id;
         first_name = "";
@@ -219,6 +257,9 @@ public class UserActivity extends AppCompatActivity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
+    /**
+     * default start up method
+     */
     protected void onStart() {
         super.onStart();
         userRef.orderByChild("user").addChildEventListener(new ChildEventListener() {

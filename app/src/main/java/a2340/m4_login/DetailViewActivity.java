@@ -11,9 +11,6 @@ import static a2340.m4_login.R.id.uniqueIdText;
 
 /**
  * Created by zlillie on 10/11/17.
- */
-
-/**
  * A controller class for DetailView.
  */
 public class DetailViewActivity extends AppCompatActivity {
@@ -28,10 +25,7 @@ public class DetailViewActivity extends AppCompatActivity {
     private TextView longitudeText;
     private Button backButton;
 
-    /**
-     * Sets layout view, inflates widgets, and retrieves Intent information.
-     * @param savedInstanceState
-     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
