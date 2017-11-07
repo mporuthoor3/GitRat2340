@@ -28,6 +28,7 @@ public class ReportPost {
     public ReportPost(int k, String cD, LocationType lT, int iZ, String iA,
                       City c, Borough b, double lat, double lon) {
         key = k;
+
         createdDate = cD;
         locType = lT;
         incZip = iZ;
@@ -52,4 +53,8 @@ public class ReportPost {
         result.put("longitude", longitude);
         return result;
     }
+
+
+
+
 }

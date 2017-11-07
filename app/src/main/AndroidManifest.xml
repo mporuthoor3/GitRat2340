@@ -32,6 +32,8 @@
         <activity android:name=".DetailViewActivity"/>
         <activity android:name=".EnterDataActivity"/>
         <activity android:name=".FilterDataActivity"/>
+        <activity android:name=".FilterGraphDataActivity"/>
+        <activity android:name=".GraphActivity"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -67,7 +69,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBxF-ug5MXX4J_8hL3UTZCtgPnl9fL9WXo"/>
+            android:value="@string/google_maps_key"/>
 
         <activity
             android:name=".MapsActivity"

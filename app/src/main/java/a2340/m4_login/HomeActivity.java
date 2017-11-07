@@ -23,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button readRatData;
     private Button enterData;
     private Button displayGoogleMaps;
+    private Button displayGraph;
 
     //private  int alreadyRead = 0;
     private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -87,6 +88,15 @@ public class HomeActivity extends AppCompatActivity {
                 launchGoogleMaps();
             }
         });
+
+        displayGraph = (Button) findViewById(R.id.displayGraph);
+        displayGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchGraph();
+            }
+        });
+
     }
 
     /**
@@ -119,6 +129,15 @@ public class HomeActivity extends AppCompatActivity {
 
     private void launchGoogleMaps() {
         Intent intent = new Intent(this, FilterDataActivity.class);
+        startActivity(intent);
+    }
+
+    private void launchGraph() {
+        if (SightingModel.model.getSightings().size() <= 1) {
+            InputStream is = getResources().openRawResource(R.raw.rat_sightings);
+            LoadSightings.loadData(is);
+        }
+            Intent intent = new Intent(this, FilterGraphDataActivity.class);
         startActivity(intent);
     }
 
