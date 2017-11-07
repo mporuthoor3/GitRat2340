@@ -33,7 +33,16 @@ public class RatSighting implements Serializable {
     public RatSighting(int k, String cD, LocationType lT, int iZ, String iA,
                        City c, Borough b, double lat, double lon) {
         key = k;
-        createdDate = cD;
+        if (cD.charAt(1) == '/') {
+            createdDate = "0"+cD;
+        } else {
+            createdDate = cD;
+        }
+        if (createdDate.charAt(4) == '/') {
+            createdDate = createdDate.substring(0,3) + "0" + createdDate.substring(3);
+        } else {
+            createdDate = cD;
+        }
         locType = lT;
         incZip = iZ;
         incAdd = iA;

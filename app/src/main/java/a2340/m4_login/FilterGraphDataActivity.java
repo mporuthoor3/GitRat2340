@@ -43,8 +43,9 @@ public class FilterGraphDataActivity extends AppCompatActivity {
     private String toDateString(DatePicker pic) {
         String str = "";
 
-        str += (pic.getMonth() + 1) + "/";
-        int num = pic.getDayOfMonth();
+        int num = pic.getMonth() + 1;
+        str += ((num<=9?"0"+num:String.valueOf(num))) + "/";
+        num = pic.getDayOfMonth();
         str += (num<=9?"0"+num:String.valueOf(num)) + "/";
         str += pic.getYear() + " 00:00";
 
