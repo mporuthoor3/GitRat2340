@@ -46,6 +46,9 @@ public class RatSighting implements Serializable {
         locType = lT;
         incZip = iZ;
         incAdd = iA;
+        if (incAdd.equals("")) {
+            incAdd = "unknown";
+        }
         city = c;
         borough = b;
         latitude = lat;
