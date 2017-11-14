@@ -14,12 +14,12 @@ public class HarshTest {
     @Test
     public void testEquals() throws Exception{
 
-       /* User user1 = new User("username",false,'randomid','secret');
+       /User user1 = new User("username",false,'randomid','secret');
         User user2 = new User("username",false,'randomid','secret');
         User user3 = new User("username1", false,"password", 'realpass');
         assertEquals(true, user1.equals(user2));
         assertEquals(false, user2.equals(user3));
-        assertEquals(false, user1.equals(user3));*/
+        assertEquals(false, user1.equals(user3));
     }
 }
 
