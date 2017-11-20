@@ -14,13 +14,14 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by Manx on 11/13/2017.
+ * Created by Manu on 11/13/2017.
  */
 
 public class ManuTest {
 
     /**
      * Tests to see if the RatSighting constructor and getters are working
+     * @throws java.lang.Exception throws exception in case tests fail unexpectedly
      */
     @Test
     public void testEquals() throws Exception{
