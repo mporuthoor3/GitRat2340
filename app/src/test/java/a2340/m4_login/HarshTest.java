@@ -1,7 +1,17 @@
-package  a2340.m4_login;
+package a2340.m4_login;
+import android.app.Service;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.app.AppCompatActivity;
+
+import com.google.firebase.FirebaseApp;
+
+import java.io.InputStream;
+import java.util.List;
+
 import org.junit.Test;
+
 import static org.junit.Assert.*;
-import a2340.m4_login.User;
 
 public class HarshTest {
 	
