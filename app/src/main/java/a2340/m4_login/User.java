@@ -48,4 +48,31 @@ public class User implements Serializable{
         return password;
     }
 
+    /**
+     *
+     * @return admin status
+     */
+    public boolean isAdmin() {
+        return this.admin;
+    }
+
+    /**
+     *
+     * @param other the object to compare
+     * @return boolean compare result
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+        if (other == null || other.getClass() != this.getClass()) {
+            return false;
+        }
+        User temp = (User) other;
+        return (temp.getName() == this.getName() && temp.getUser() == this.getUser() && temp.getPass() == this.getPass()
+                && temp.isAdmin() == this.isAdmin());
+
+    }
+
 }
